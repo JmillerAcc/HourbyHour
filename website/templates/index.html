@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="{{ url_for('static', filename= 'index.css')}}">
+<script src="/static/index.js" defer></script>
+<html>
+{% extends 'base.html' %}
+{% block title %}
+Accuride
+{% endblock %}
+{% block content %}
+<main>
+  <video src="static/videos/Accuride Henderson Plant.mp4" autoplay loop muted playsinline></video>
+  <div class="overlay"></div>
+  <div class="image-nav">
+    <div class="image-pair">
+      <button id="asyBtn"><img src="static/Images/assemblynav.png" alt=""></button>
+      <div>
+        <button id="discBtn"><img src="static/Images/discnav.png" alt=""></button>
+      </div>
+      <div>
+        <button id="wheelBtn"><img src="static/Images/wheelnav.png" alt=""></button>
+      </div>
+    </div>
+    <div id="my-Modal" class="modalI">
+      <!-- Modal content -->
+      <div class="modal-contentI">
+        <span class="closeB">&times;</span>
+        <ul class="lineOptions">
+          <a href="/471"><li>471</li></a>
+          <a href="/474"><li>474</li></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+<style>
+  main {
+    position: relative;
+  }
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+</style>
+<script>
+  // Get the modal
+  var modal = document.getElementById("my-Modal");
+
+  // Get the button that opens the modal
+  var asyBtn = document.getElementById("asyBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("closeB")[0];
+
+  // When the user clicks the button, open the modal
+  asyBtn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+</script>
+
+<div id="banner">
+  <span class="banner-text"><p>Feature Update: Filter Input area at top now filters through the table contents on the line pages!</p></span>
+  <button id="closeBtn">&times;</button>
+</div>
+{% endblock %}
+</html>

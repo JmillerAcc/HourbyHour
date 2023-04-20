@@ -1,0 +1,130 @@
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"defer></script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename= 'comments.css')}}">
+<script src="/static/comments.js" defer></script>
+
+<html>
+{% extends 'base.html' %}
+{%block title%}
+Accuride
+{%endblock%}
+{%block content%}
+<main>
+
+        <div class="body-container">
+          <table class="l474" id="data-table">
+              <thead>
+                <tr>
+                  {% for column in data[0].keys() %}
+                  <th>{{ column }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in data %}
+                <tr>
+                  {% for value in row.values() %}
+                  <td>{{ value }}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+          <div class="row2">
+            <div class="img-container">
+            <img class="first-img-block" src="https://www.accuridecorp.com/sites/default/files/media/images/2023-03/Red%20Truck_edit%201.png">
+            <div class="subhead"><h1 id="linenumb">Line 474</h1></div>
+            </div>
+            <div class="section-2">
+              <div class="section-cube-1">
+                <h1>Part Totals</h1>
+                <div class="table-2-container"> 
+                  <table id="weektotals-tb">
+                    <thead>
+                      <tr>
+                        <th>Week Day</th>
+                        <th>Total Parts</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for weekday, total_parts in weekday_parts %}
+                      <tr>
+                        <td>{{ weekday }}</td>
+                        <td>{{ total_parts }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <div class="img-vertical">
+                    <img id="table-3-img" src="static/Images/Test.png" alt="">
+                    <img id="table-2-img" src="static/Images/TestWhite.png" alt="">
+                    <img id="table-3-img" src="static/Images/Test.png" alt="">
+               
+                  </div>              
+                </div>
+             </div>
+            </div>
+
+            <div class="section-2">
+              <div class="section-cube-1">
+                <h1>Starved</h1>
+                <div class="table-2-container"> 
+                  <table id="starved-tb">
+                    <thead>
+                      <tr>
+                        <th>Week Day</th>
+                        <th>Starved Time(min)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for weekdays, Total in weekday_starved  %}
+                      <tr>
+                        <td>{{ weekdays }}</td>
+                        <td>{{ Total }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <div class="img-vertical">
+                    <img id="stable-3-img" src="static/Images/starved.png" alt="">
+                  </div>              
+                </div>
+              </div>
+            </div>
+
+            <div class="section-2">
+              <div class="section-cube-1">
+                <h1>Blocked</h1>
+                <div class="table-2-container"> 
+                  <table id=".blocked-tb">
+                    <thead>
+                      <tr>
+                        <th>Weekday</th>
+                        <th>Blocked Time(min)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for weekdayd, Total in weekday_blocked  %}
+                      <tr>
+                        <td>{{ weekdayd }}</td>
+                        <td>{{ Total }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <div class="img-vertical">
+                    <img id="btable-3-img" src="static/Images/Blocked.png" alt="">
+                    
+                  </div>              
+                </div>
+             </div>
+            </div>
+            
+          </div> 
+
+      </main>  
+{%endblock%}   
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js" defer></script>
+
+<script src="{{ url_for('static', filename='profile.js') }}" defer></script>
+<script src="{{ url_for('static', filename='base.js') }}" defer></script>
+<script src="{{ url_for('static', filename='comments.js') }}" defer></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {% endblock %}</title>  
+     <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css')}}">
+     <link rel="stylesheet" href="{{ url_for('static', filename= 'navstyle.css')}}">
+     <link rel="stylesheet" href="{{ url_for('static', filename= 'comments.css')}}">
+</head>
+
+<body>
+  <!--Comments Modal slide down-->
+  <div class="modal" id="comment-modal" hidden>
+    <div class="modal-content">
+      <h2 id="modal-header">Comment</h2>
+      <form id="comment-form" action="{{ url_for('views.l_474') }}" method="POST">
+        
+        <!-- Existing form fields -->
+        <label for="line-number">Line Number:</label>
+        <input type="text" name="lineNumber" id="lineNumber" readonly value="{{ lineNumb }}">
+        <label for="Day of Week">Day of Week:</label>
+        <input type="text" name="dayOfWeek" id="dayOfWeek" readonly value="{{ dayOfWeek }}">
+        <label for="comment">Hour:</label>
+        <input type="text" name="subject" id="subject" readonly value="{{ subject }}">
+        <label for="comment">Comment:</label>
+        <input type="text" name="comment" id="comment" required>
+  
+        <!-- Expander with radio buttons -->
+        <div class="expander">
+          <button class="expander-button" type="button">Downtime Type<span class="triangle-symbol" style="float:right;">&#9654;</span></button>
+
+          <div class="expander-content" style="display:none;">
+              <h2>Select Downtime Type:</h2>
+            <div class = 'radio-wrapper'>
+              <label>
+                <input type="radio" name="downtimeType" value="Maintenance" checked>
+                Maintenance
+              </label>
+              <label>
+                <input type="radio" name="downtimeType" value="Changeover">
+                Changeover
+              </label>
+              <label>
+                <input type="radio" name="downtimeType" value="Blocked">
+                Blocked
+              </label>
+              <label>
+                <input type="radio" name="downtimeType" value="Starved">
+                Starved
+              </label>
+
+            </div>
+          </div>
+        </div>
+  
+        <!-- Submit button and close button -->
+        <button type="submit" id="submit-comment">Save</button>
+        <span class="close">&times;</span>
+      </form>
+    </div>
+  </div>
+
+
+
+  <div class="page-layout">
+    <header>
+      <div class="flex-container">
+        <a href="/"><span><h1><img class="logo" src="https://th.bing.com/th?id=OIP.AgxpJbcZvFTRYHqJDBtjuQHaBh&w=349&h=71&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt=""></span></h1></a>
+        <div class="user-login-container">
+          {% if user.is_authenticated %}
+          <a href="/logout"><button class="login-logout">Log-out</button></a>          
+          {% else %}
+          <a href="/login"><button class="login-logout">Login</button></a>
+          {% endif %}
+        </div> 
+      </div>
+
+      <div class="searchbox-container">
+        <input type="text" id="search-input" placeholder="Filter Data..">
+        <button class="search-button">
+          <img class="search-icon" src="static/Images/search.png" alt="">
+        </button>
+        <button id="clear-search">Clear</button>
+      </div>
+
+      <!--Script of Highlighting cell values below-->
+      <script>
+        //Heatmap/Cell highlight
+        $(document).ready(function() {
+          // Initialize DataTable for data-table
+          
+          var data_table = $('#data-table').DataTable({
+            "ordering": false,
+            "searching": true,
+            "dom": 'lrtip',
+            "paging": false,
+            "info": false,
+            "searchDelay": 0,
+            "createdRow": function(row, data, dataIndex) {
+              // Get the cells of the current row
+              var cells = $('td', row);
+              // Loop through the cells and add the highlight class if the cell value meets the condition
+              cells.each(function(index) {
+                if (index !== cells.length - 1) { // Exclude last cell
+                  var cellValue = parseInt($(this).text());
+                  if (cellValue > 0 && cellValue <100) {
+                    $(this).addClass('red');
+                  } else if (cellValue > 100 && cellValue < 200) {
+                    $(this).addClass('highlight');
+                  } else if (cellValue >= 200) {
+                    $(this).addClass('green');
+                  }
+                } else { // Highlight last cell if the value is greater than 2500
+                  var cellValue = parseInt($(this).text());
+                  if (cellValue > 2500) {
+                    $(this).addClass('green');
+                  }
+                }
+              });
+            }
+          });
+          
+          // Initialize DataTable for weektotals-tb
+          var week_totals_table = $('#weektotals-tb').DataTable({
+            "ordering": false,
+            "searching": true,
+            "dom": 'lrtip',
+            "paging": false,
+            "info": false,
+            "createdRow": function(row, data, dataIndex) {
+              // Get the cells of the current row
+              var cells = $('td', row);
+              // Highlight last cell if the value is greater than 5000
+              var lastCell = cells.last();
+              var cellValue = parseInt(lastCell.text());
+              if (cellValue > 5000) {
+                lastCell.addClass('green');
+              }
+            }
+          });
+          
+          $('table').each(function() {
+            if (!$.fn.DataTable.isDataTable(this)) {
+              $(this).DataTable({
+                "ordering": false,
+                "searching": true,
+                "dom": 'lrtip',
+                "paging": false,
+                "info": false
+              });
+            }
+          });
+          
+          // Get all DataTables on the page
+          var tables = $.fn.dataTable.tables();
+          
+          // Search function for all tables
+          function searchAllTables(searchTerm) {
+            $.each(tables, function() {
+              $(this).DataTable().search(searchTerm).draw();
+            });
+          }
+          
+          // Add search and clear search functionality to all tables
+          $('.search-button').click(function() {
+            var searchTerm = $('#search-input').val();
+            searchAllTables(searchTerm);
+          });
+          
+          $('#clear-search').click(function() {
+            $('#search-input').val('');
+            searchAllTables('');
+            $(this).hide();
+          });
+          
+          $('#search-input').keyup(function() {
+            searchAllTables($(this).val());
+          });
+          
+          // Show or hide clear search button based on search input
+          $.each(tables, function() {
+            var currentTable = $(this).DataTable();
+            currentTable.on('search.dt', function() {
+              if (currentTable.search()) {
+                $('#clear-search').show();
+              } else {
+                $('#clear-search').hide();
+              }
+            });
+          });
+        });
+      </script>    
+        <div class="navbuttons">
+          <a href="https://www.plexonline.com/ece3221b-ff0c-4f65-8bb9-9954071c0a88/Modules/SystemAdministration/MenuSystem/menu.aspx?Node=3114307" target="_blank"><button>Plex Login</button></a>
+      
+        </div>
+      
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{category}}">
+          <h2>{{message}}</h2>
+        </div>
+        <script>
+          function hideMessage(element) {
+            element.style.display = 'none';
+          }
+          setTimeout(function() {
+            document.querySelector('.alert').remove();
+          }, 2000); // hide message after 2 seconds
+        </script>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+    
+ 
+
+      {% block header %}
+      {% endblock %}
+      <div class="lineNumber">
+        <div class="clock-container">
+          {% if user.is_authenticated %}
+            {% if not request.path.startswith('/profile')  and not request.path.startswith('/admin')  %}
+              <a href="/profile"><span onclick="openNav()" class="user-greeting"><h1>Welcome {{user.first_name}}</h1></span></a>
+            {% else %}
+            <span onclick="openNav()" class="user-greeting"><h1>Welcome {{user.first_name}}</h1></span>
+            {% endif %}
+          {% endif %}  
+          {% if request.path != '/' %}
+          <div class="dropdown">
+            <button class="dropbtn">Line Navigation</button>
+            <div class="dropdown-content">
+              <a class="dropdown-link" href="/471">471</a>
+              <a class="dropdown-link" href="/474">474</a>
+              <a class="dropdown-link" href="/424">424</a>
+              <a class="dropdown-link" href="/429">429</a>
+              <a class="dropdown-link" href="/456">456</a>
+              <a class="dropdown-link" href="/457">457</a>
+              <a class="dropdown-link" href="/458">458</a>
+              <a class="dropdown-link" href="/461">461</a>
+            </div>
+          </div>
+          {% endif %}     
+          <h1 id="datetime"></h1>
+        </div>  
+      </div>
+      <script src="{{ url_for('static', filename='clock.js') }}" defer></script>
+      <div id="main">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+    <footer>
+      <p>All rights reserved @2023</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+* ,html{
+  margin: 0;
+  padding-left: .5px;
+  padding-right: .5px;
+}
+html, body{
+  width: 100%;
+  height: 100%; /* change to 100% */
+  margin: 0; /* remove margin */
+  padding: 0; /* remove padding */
+  display: flex;
+  flex-direction: column; /* use flexbox to make sure the footer is at the bottom */
+}
+main{
+  flex-grow: 1;
+  min-height: 85.5%;
+  margin-top: 3px;
+  height: 1fr;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* use margin-top:auto to push it to the bottom */
+  border-top: 1px solid black;
+}
+.clock-container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4px;
+}
+.user-greeting{
+  text-align: end;
+  color: red;
+  display: flex;
+  cursor: pointer;
+}
+#line-474{
+  font-family: sans-serif;
+  
+}
+.linenum{
+  color: red;
+}
+
+/* table Styling */
+table.l474 {
+  margin-bottom: 0px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.l474 th, table.l474 td, tr {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #090909;
+}
+
+table.l474 th, tr {
+  background-color: lightgray;
+}
+
+
+.row2{
+  display: flex;
+  flex-grow: 2;
+  flex-direction: row;
+  justify-items: flex-start;
+  flex-grow: 1;
+  background-image: linear-gradient(to right, rgb(0, 0, 0),rgb(0, 0, 0), rgb(0, 0, 0), 
+  rgb(32, 30, 30), rgb(151, 146, 146), rgb(204, 200, 200), rgba(230, 214, 214, 0.748));
+  margin-top: 0px;
+  margin-bottom: 4px;
+  
+  
+  
+}
+.subhead{
+  width: 200px;
+  justify-content: center;
+}
+#linenumb{
+  color: white;
+  width: 150px;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  align-items: center;
+  margin-left: 32px;
+  margin-top: 125px;
+}
+/* Section Two Styles Flexbox*/
+.section-2{
+  margin-top: 15px;
+  border: none;
+  display: flex;
+  width: 260px; 
+  height: 280px;
+  box-shadow: lightgray 5px 0px 6px 6.5px;
+  background-color: rgba(77, 74, 74, 0.056);
+  margin-right: 25px;
+
+}
+.img-container{
+  display: flex;
+  width: 600px;
+  height: 310px;
+  align-content: start;
+  align-self: flex-start;
+  margin-right: 450px;
+  padding-left: 3px;
+  
+ 
+}
+.first-img-block{
+  width: 100%;
+  left: 0;
+  object-fit: cover;
+  display: flex;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+
+.image-vertical{
+  height: 100%;
+  vertical-align: top;
+  max-width: 100%;
+
+}
+
+.section-cube-1 h1{
+  vertical-align: top;
+  display: inline;
+  margin-left: 20px;
+  text-shadow: rgba(21, 18, 18, 0.235) 2px 2px;
+  margin-right: 4px;
+  
+}
+
+/*section 2 table style*/
+#weektotals-tb #blocked-tb #starved-tb{
+  border: 1px rgba(6, 6, 6, 0.193) solid;
+  box-shadow: lightgray 5px 5px 10px 1px;
+  width: auto;
+  border-collapse:separate;
+  margin-left: 18px;
+  height: 200px;
+}
+.table-2-container{
+  display: flex;
+}
+
+.highlight{
+  background-color: orange;
+}
+
+.green{
+  background-color: green;
+}
+.red{
+  background-color: rgb(171, 35, 35);
+  color: white;
+}
+#weektotals-tb tr{
+  justify-content: space-around;
+  height: 23.6px;
+  text-align: center;
+  
+}
+#table-2-img{
+max-width: 60px;
+max-height: 60px; 
+margin-left: 23px;
+display: block;
+justify-content: space-evenly;
+}
+
+#stable-3-img{
+  max-width: 100%;
+  min-height: 150px;
+  align-items: center;
+  justify-self: center;
+  object-fit:cover;
+  margin-top: 20px; 
+}
+
+#btable-3-img{
+  max-width: 100%;
+  min-height: 150px;
+  align-items: center;
+  justify-self: center;
+  object-fit:fill;
+  margin-top: 30px;
+}
+#table-3-img{
+  max-width: 62px;
+  max-height: 62px; 
+  margin-left: 23px;
+  display: block;
+  justify-content: space-evenly;
+  margin-top: 2px;
+}
+
+/* Style the dropdown button */
+.dropbtn {
+  background-color: #ed0606;
+  color: white;
+  font-size: bold;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn.hovered {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  color: black;
+  font-weight: bold;
+  
+}
+
+/* Style the dropdown content */
+/* Style the dropdown content */
+.dropdown-content {
+  position: absolute;
+  z-index: 1;
+  top: 60px;
+  left: 0;
+  white-space: nowrap;
+  display: none;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+  background-color: #ed0606; /* set background color to red */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
+}
+
+/* Style the anchor tags inside the dropdown content */
+.dropdown-content a {
+  color: white; /* set text color to white */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Style the hover state of anchor tags inside the dropdown content */
+.dropdown-content a:hover {
+  
+  font-weight: bolder;
+}
+/* Display the dropdown content when hovering over the button */
+.dropdown:hover .dropdown-content {
+  display: block;
+  transform: translateX(0); /* slide the dropdown content into view */
+  left: 100%; /* align the right edge of the dropdown content with the right edge of the button */
+  top: 0; /* align the top of the dropdown content with the top of the button */
+}
+
+.dropdown {
+  position: relative;
+}
+.dataTables_filter {
+  display: none;
+}
+
+#clear-search{
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  height: 30px;
+  width: 100%;
+
+
+}

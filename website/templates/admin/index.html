@@ -1,0 +1,29 @@
+{% extends 'admin/master.html' %}
+
+{% block head_css %}
+{{ super() }}
+<link href="{{ url_for('static', filename='admin.css') }}" rel="stylesheet">
+{% endblock head_css %}
+{% block brand%}<span class="brander"><h3>Accuride</h3></span>{%endblock%}
+
+{% block body%}
+<div class="jumbotron">
+  <h2>Welcome To your Admin Portal</h1>
+  <h3>This page is underconstruction!</h3>
+  <h5><span class="jumbointro">BUT</span>,&nbsp many features are available.
+  Such as show all notes, create, modify comments and users.</h5>
+  
+  <p><a class="btn btn-primary btn-lg" href="/profile" role="button">Back to Profile</a></p>
+</div>
+
+
+<form method="POST" action="{{ url_for('auth.admin') }}">
+  <div class="form-group">
+    <label for="banner-text">Banner Text</label>
+    <textarea class="form-control" id="banner-text" name="banner-text" rows="3">{{ banner_text }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" name="submit_button" value="Update">Update</button>
+  <button type="submit" class="btn btn-secondary" name="submit_button" value="Cancel">Cancel</button>
+</form>
+
+{% endblock %}

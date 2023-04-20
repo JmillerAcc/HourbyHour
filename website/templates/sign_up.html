@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename= 'signup.css')}}">
+
+<html>
+  {% extends 'base.html' %}
+  {% block title %}Accuride Sign up!{% endblock %}
+  
+
+
+    
+
+  {% block content %}
+    <div class="signup-container">
+      <form method="POST">
+        <h3 align="center">Sign Up</h3>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <br>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <br>
+          <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <br>
+          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name">
+        </div>
+
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <br>
+          <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+          <label for="password2">Password (Confirm)</label>
+          <br>
+          <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password">
+        </div>
+        
+      
+        <button type="submit" class="btn-primary">Submit</button>
+      </form>
+    </div>
+    {% endblock %}
+    
+</html>

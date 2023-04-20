@@ -1,0 +1,42 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  display: block;
+  width: 150%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+h3{
+  padding-bottom: 10px;
+}
+.btn-primary{
+  background-color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: .15s;
+}
+.btn-primary:hover{
+  background-color: red;
+  color: white;
+}
+.btn-primary:active{
+  opacity: .7;
+}

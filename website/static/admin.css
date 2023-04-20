@@ -1,0 +1,19 @@
+.brander{
+  color: white;
+  padding-right: 2px;
+}
+.jumbotron{
+  background-color: beige;
+  width: 50%;
+  border-radius: 10px;
+  height: 200px;
+  padding: 2px;
+  opacity: .8;
+}
+
+.jumbointro{
+  color: red;
+}
+.btn.btn-primary.btn-lg{
+  margin-top: 1.5%;
+}

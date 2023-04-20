@@ -1,0 +1,77 @@
+*html{
+  box-sizing: border-box;
+}
+.CONSTRUCTION{
+  text-align: center;
+}
+
+
+.login-container{
+  justify-content: center;
+  margin: auto;
+  display: flex;
+}
+
+.login-form{
+  border:black;
+  border-style: solid;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  border-width: 2px;
+}
+.user{
+  display: block;
+  justify-self: center;
+  
+}
+.psw{
+  display: block;
+  justify-self: right;
+}
+.login{
+  margin-left: 87px;
+  width: 80px;
+  background-color: white;
+  font-weight: bolder;
+  border-radius: 4px;
+  transition: .15s;
+  border: black, .5px;
+  margin-top: 10px;
+}
+
+.login:hover{
+  background-color: red;
+  color: white;
+  
+
+}
+
+
+.modal{
+  background-color: rgba(211, 211, 211, 0.351);
+  text-align: center;
+  vertical-align: middle;
+  
+}
+
+.close{
+  cursor: pointer;
+}
+
+.register-container{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+#signup{
+  padding-right: 4px;
+  text-decoration: none;
+}
+#pass-rec{
+  text-decoration: none;
+  padding-left: 4px;
+
+}

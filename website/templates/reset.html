@@ -1,0 +1,45 @@
+<html>
+<link rel="stylesheet" href="{{ url_for('static', filename= 'login.css')}}">
+{% extends 'base.html' %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+
+{% block title %}
+Accuride
+{% endblock %}
+
+{% block content %}
+
+{% if message %}
+
+{% endif %}
+
+{% if form.errors %}
+<ul>
+{% for field, errors in form.errors.items() %}
+{% for error in errors %}
+<li>{{ field }} - {{ error }}</li>
+{% endfor %}
+{% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+{{ form.csrf_token }}
+<div class="form-group">
+    {{ form.password.label }}
+    {{ form.password(class='form-control', placeholder='Enter New Password') }}
+</div>
+
+<div class="form-group">
+    {{ form.password2.label }}
+    {{ form.password2(class='form-control', placeholder='Confirm New Password') }}
+</div>
+
+<button type="submit" class="btn btn-primary">Reset Password</button>
+</form>
+
+{% endblock %}
+
+
+</html>

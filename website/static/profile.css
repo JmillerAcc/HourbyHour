@@ -1,0 +1,190 @@
+*{  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+
+/* The side navigation menu */
+.sidenav {
+  margin-top: 10.25vh;
+  height: 84.5%; 
+  width: 250px; 
+  position: fixed;
+  z-index: 1; 
+  top: 0; 
+  left: 0;
+  background-color: #cc1414;
+  overflow-x: hidden;
+  padding-top: 60px; 
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-greeter{
+  color: white;
+  text-align: center;
+  margin-right: 15%;
+  margin-left: 12%;
+  text-decoration: underline;
+  font-size: 20px;
+  margin-bottom: 32px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.profile-pic{
+  border-radius: 30px;
+  max-height: 30px;
+  margin-right: 82%;
+  margin-top: 5%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+
+.sidenav a:not(:first-child) {
+  margin-top: 10px;
+}
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #040404;
+  display: block;
+  transition: 0.3s;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: -30;
+  right: 3px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.notification {
+  position: absolute;
+  top: 230px;
+  right: -185px;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: flex;
+  width: auto;
+  height: auto;
+}
+
+
+
+.badge {
+  position: absolute;
+  top: -2px;
+  right: 187px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: transparent;
+  color: white;
+  display: flex;
+  width: 25px;
+  color: white;
+  font-weight: bold;
+  
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main.pushed {
+  margin-left: 250px; 
+}
+#main{
+  transition: margin-left .5s;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+#topInfo{
+  border-radius: 10px;
+  background-color: #cc1414;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 50px;
+
+}
+.adminInfo-container{
+  display: flex;
+  width: 100%;
+  padding: 50px;
+  justify-content: center;
+  
+  
+}
+#adminInfo{
+  border-radius: 10px;
+  background-color: #090909;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 50px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+
+}
+#formContainer{
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+
+.profile-row2{
+  display: flex;
+  width: 100%;
+  height: 400px;
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 40%) {
+  .sidenav {
+    height: 40vh;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+@media screen and (max-height: 60%) {
+  .sidenav {
+    height: 75.5vh;
+    margin-top: 5.56%;
+    padding-top: 5px;
+    
+  }
+}
+
+@media screen and (max-height: 90%) {
+  .sidenav {
+    height: 82.8vh;
+    margin-top: 7.0%;
+   
+  }
+}
+
+@media screen and (max-height: 80%) {
+  .sidenav {
+    height: 78.8vh;
+    margin-top: 7.8%;
+   
+  }
+}
+

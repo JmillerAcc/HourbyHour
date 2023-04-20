@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<script src="{{ url_for('static', filename='profile.js') }}" defer></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} {% endblock %}</title>  
+     <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css')}}">
+     <link rel="stylesheet" href="{{ url_for('static', filename= 'navstyle.css')}}">
+</head>
+
+<body>
+  <div class="page-layout">
+    <header>
+      <div class="flex-container">
+        <a href="/"><span><h1><img class="logo" src="https://th.bing.com/th?id=OIP.AgxpJbcZvFTRYHqJDBtjuQHaBh&w=349&h=71&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt=""></span></h1></a>
+      <div class="searchbox-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button class="search-button">
+          <img class="search-icon" src="static/Images/search.png" alt="">
+        </button>
+      </div>
+      <div class="navbuttons">
+        <a href="https://www.plexonline.com/ece3221b-ff0c-4f65-8bb9-9954071c0a88/Modules/SystemAdministration/MenuSystem/menu.aspx?Node=3114307" target="_blank"><button>Plex Login</button></a>
+        
+      </div>
+      
+    </header>
+
+      {% block header %}
+      {% endblock %}
+      <div class="lineNumber">
+        <div class="clock-container">
+       
+          <h1 id="datetime"></h1>
+        </div>  
+      </div>
+      <script src="{{ url_for('static', filename='clock.js') }}" defer></script>
+      <div id="main">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+    <footer>
+      <p>All rights reserved @2023</p>
+    </footer>
+</body>
+
+</html>
